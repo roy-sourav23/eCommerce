@@ -3,8 +3,12 @@ import React from "react";
 import { Box, Button, Rating, Typography } from "@mui/material";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
+import AddToCartButton from "../button/AddToCartButton";
+import { useDispatch } from "react-redux";
+import { addToWishList } from "../../features/wishList/wishListSlice";
 
 const ProductInfo = ({ props }) => {
+  const dispatch = useDispatch();
   const previousPrice = Math.round(
     props.price + (props.price * props.discountPercentage) / 100
   );
@@ -141,26 +145,11 @@ const ProductInfo = ({ props }) => {
             gap: "1.2rem",
           }}
         >
-          <Button
-            variant="contained"
-            sx={{
-              padding: "0.7rem 1rem",
-              width: "100%",
-              fontFamily: "var(--button-font)",
-              fontSize: "1rem",
-              backgroundColor: "var(--text-color)",
+          <AddToCartButton props={props} />
 
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              maxWidth: { xs: "300px", md: "none" },
-            }}
-          >
-            <ShoppingBagOutlinedIcon />
-            <span style={{ marginLeft: "0.4rem" }}>add to cart</span>
-          </Button>
           <Button
             variant="contained"
+            onClick={() => dispatch(addToWishList(props))}
             sx={{
               padding: "0.7rem 1rem",
               backgroundColor: "var(--text2-color)",

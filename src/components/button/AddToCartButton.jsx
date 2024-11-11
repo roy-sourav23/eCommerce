@@ -5,21 +5,6 @@ import { addedToCart } from "../../features/cart/cartSlice";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import { createData } from "../../utils/utils";
 
-// const createData = (props) => {
-//   console.log("props", props);
-
-//   return {
-//     id: props.id,
-//     thumbnail: props.thumbnail,
-//     brand: props.brand,
-//     title: props.title,
-//     price: props.price,
-//     discountPercentage: props.discountPercentage,
-//     quantity: 1,
-//     totalAmount: 0,
-//   };
-// };
-
 const AddToCartButton = ({ props }) => {
   const dispatch = useDispatch();
 
